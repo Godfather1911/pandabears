@@ -4,7 +4,7 @@ import psycopg2
 #RDS connection parameters
 ENDPOINT= "postgres.ctu4k40myamm.us-east-2.rds.amazonaws.com"
 PORT= "5432"
-USER= "flask_app_user"
+USER= "postgres"
 PASSWORD = "Student1"
 REGION= "us-east-2"
 DBNAME= "postgres"
@@ -22,7 +22,7 @@ def get_students():
     try:
         conn = psycopg2.connect(host=ENDPOINT, port=PORT, database=DBNAME, user=USER, password=PASSWORD)
         cur = conn.cursor()
-        cur.execute("""SELECT * from test""")
+        cur.execute("""SELECT * from student""")
         query_results = cur.fetchall()
         print(query_results)
         return(query_results)
